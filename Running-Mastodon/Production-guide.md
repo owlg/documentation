@@ -23,14 +23,14 @@ map $http_upgrade $connection_upgrade {
 server {
   listen 80;
   listen [::]:80;
-  server_name example.com;
+  server_name reveal.today;
   return 301 https://$host$request_uri;
 }
 
 server {
   listen 443 ssl;
   listen [::]:443 ssl;
-  server_name example.com;
+  server_name reveal.today;
 
   ssl_protocols TLSv1.2;
   ssl_ciphers EECDH+AESGCM:EECDH+AES;
@@ -38,14 +38,14 @@ server {
   ssl_prefer_server_ciphers on;
   ssl_session_cache shared:SSL:10m;
 
-  ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
-  ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+  ssl_certificate     /etc/letsencrypt/live/reveal.today/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/reveal.today/privkey.pem;
 
   keepalive_timeout    70;
   sendfile             on;
   client_max_body_size 0;
 
-  root /home/mastodon/live/public;
+  root /home/mastodon/mastodon/public;
 
   gzip on;
   gzip_disable "msie6";
